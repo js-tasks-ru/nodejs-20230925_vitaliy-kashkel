@@ -2,7 +2,7 @@
 const Validator = require('../Validator');
 const expect = require('chai').expect;
 
-describe.only('testing-configuration-logging/unit-tests', () => {
+describe('testing-configuration-logging/unit-tests', () => {
   describe('Validator', () => {
     it('невозможно создание валидатора если не задать правила валидации', () => {
       try {
