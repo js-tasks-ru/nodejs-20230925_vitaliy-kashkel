@@ -30,6 +30,34 @@ const productSchema = new mongoose.Schema({
 
   images: [String],
 
+}, {
+  toJSON: {
+    virtuals: true,
+    transform(_doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+    },
+  },
+  toObject: {
+    virtuals: true,
+    transform(_doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+    },
+  },
 });
+
+productSchema.index(
+    {title: 'text', description: 'text'},
+    {
+      weights: {title: 10, description: 5},
+      default_language: 'russian',
+      name: 'TextSearchIndex',
+    },
+);
 
 module.exports = connection.model('Product', productSchema);
