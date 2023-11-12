@@ -10,7 +10,7 @@ const transportEngine = require('../libs/sendMail').transportEngine;
 const expect = require('chai').expect;
 const get = require('lodash/get');
 
-describe('email/registration', () => {
+describe.only('email/registration', () => {
   describe('регистрация', function () {
     let server;
     before((done) => {
